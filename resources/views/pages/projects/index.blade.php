@@ -28,7 +28,7 @@
                             <td>{{ $project->content }}</td>
                             <td>{{ $project->slug }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('dashboard.projects.edit', $project -> id) }}">
+                                <a class="btn btn-primary" href="{{ route('dashboard.projects.edit', $project ->id) }}">
                                     Modifica
                                 </a>
                                 <form method="POST" action="{{ route('dashboard.projects.destroy', $project->id) }}">
