@@ -25,7 +25,7 @@ class StoreProjectRequest extends FormRequest
             'title' => [
                 'required',
                 'unique:projects',
-                'max|250'
+                'max:250'
             ],
             [
                 'content' => [
