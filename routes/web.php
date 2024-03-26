@@ -33,4 +33,4 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
     Route::resource('projects', ProjectController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
