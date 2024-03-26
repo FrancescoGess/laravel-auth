@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {
-    Route::resource('project');
+    Route::resource('projects', ProjectController::class);
 });
 
 require __DIR__.'/auth.php';
