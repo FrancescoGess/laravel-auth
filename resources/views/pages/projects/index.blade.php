@@ -6,6 +6,8 @@
             Lista Progetti
         </h1>
 
+        <a class="btn btn-dark" href="{{ route('dashboard.projects.create') }}">Crea</a>
+
         <div class="table-responsive">
             <table class="table table-primary">
                 <thead>
@@ -14,24 +16,33 @@
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
                         <th scope="col">Slug</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @foreach ($projects as $project )
-                        
-                    <tr class="">
-                        <td>{{ $project->id }}</td>
-                        <td>{{ $project->title }}</td>
-                        <td>{{ $project->content }}</td>
-                        <td>{{ $project->slug }}</td>
-                    </tr>
+                    @foreach ($projects as $project)
+                        <tr class="">
+                            <td>{{ $project->id }}</td>
+                            <td>{{ $project->title }}</td>
+                            <td>{{ $project->content }}</td>
+                            <td>{{ $project->slug }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('dashboard.projects.edit', $project -> id) }}">
+                                    Modifica
+                                </a>
+                                <form method="POST" action="{{ route('dashboard.projects.destroy', $project->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-danger">
+                                        Elimina
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
-                    <tr class="">
-                        <td scope="row">Item</td>
-                        <td>Item</td>
-                        <td>Item</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
