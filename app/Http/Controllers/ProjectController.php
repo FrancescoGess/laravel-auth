@@ -47,7 +47,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $Project)
+    public function show(Project $project)
     {
         //
     }
@@ -55,24 +55,24 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $Project)
+    public function edit(Project $project)
     {
-        //
+        return view('pages.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $Project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $Project)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('dashboard.projects.index');
     }
 }
