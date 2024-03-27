@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 use App\Models\Project;
 use Illuminate\Support\Str;
 
-class PostSeeder extends Seeder
+class ProjectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,13 +17,13 @@ class PostSeeder extends Seeder
     public function run(Faker $faker): void
     {
         for($i = 0; $i < 10; $i++){
-            $post = new Project();
+            $project = new Project();
 
-            $post->title = $faker -> sentence(3);
-            $post->content = $faker -> text(500);
-            $post->slug = Str::slug($post->title, '-');
+            $project->title = $faker -> sentence(3);
+            $project->content = $faker -> text(500);
+            $project->slug = Str::slug($project->title, '-');
 
-            $post->save();
+            $project->save();
         }
     }
 }
