@@ -2,9 +2,13 @@
 
 @section('content')
     <main class="container">
-       <h1>Progetto</h1>
+       <h1>{{ $project->title }}</h1>
+
+       @if($project->cover_image)
+        <img class="img-fluid" src="{{ asset('/storage/' . $project->cover_image) }}" alt="{{ $project->title }}">
+       @endif
        <p>
-        
+        {{ $post->content }}
        </p>
     </main>
 @endsection
