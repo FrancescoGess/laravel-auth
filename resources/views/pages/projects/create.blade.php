@@ -6,7 +6,10 @@
             Lista Progetti
         </h1>
 
-        <form method="POST" action="{{ route('dashboard.projects.store') }}">
+        <form 
+        method="POST" 
+        enctype="multipart/form-data" 
+        action="{{ route('dashboard.projects.store') }}">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -19,6 +22,21 @@
 
                     </div>
                 @enderror
+            </div>
+
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label for="" class="form-label">Name</label>
+                    <input
+                        type="file"
+                        name="cover_image"
+                        id="cover_image"
+                        class="form-control
+                        @error('cover_image') is-invalid
+                            
+                        @enderror">
+                </div>
+                
             </div>
 
             <div class="mb-3">

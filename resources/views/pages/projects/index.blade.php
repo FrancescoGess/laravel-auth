@@ -16,6 +16,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
                         <th scope="col">Slug</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -27,8 +28,9 @@
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->content }}</td>
                             <td>{{ $project->slug }}</td>
+                            <td>{{ $project->cover_image }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('dashboard.projects.edit', $project ->id) }}">
+                                <a class="btn btn-primary" href="{{ route('dashboard.projects.edit', $project->id) }}">
                                     Modifica
                                 </a>
                                 <form method="POST" action="{{ route('dashboard.projects.destroy', $project->id) }}">
