@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -35,11 +36,16 @@ class ProjectController extends Controller
 
         $val_data = $request->validated();
 
-        $slug = Project::generateSlug( $request->title );
-        
+        $slug = Project::generateSlug($request->title);
+
         $val_data['slug'] = $slug;
 
-        $new_project = Project::create( $val_data );
+        //gestione immagine
+        if($request->hasFile('cover_image')){
+            $path = Storage::disk('public')->put('project_images', $request->cover_image);
+        }
+
+        $new_project = Project::create($val_data);
 
         return redirect()->route('dashboard.projects.index');
     }
@@ -66,11 +72,11 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
 
-        $slug = Project::generateSlug( $request->title );
+        $slug = Project::generateSlug($request->title);
 
         $val_data = $request->validated();
-        
-        $project->update( $val_data );
+
+        $project->update($val_data);
 
         return redirect()->route('dashboard.projects.index');
     }
