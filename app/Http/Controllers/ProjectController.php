@@ -41,8 +41,12 @@ class ProjectController extends Controller
         $val_data['slug'] = $slug;
 
         //gestione immagine
-        if($request->hasFile('cover_image')){
-            $path = Storage::disk('public')->put('project_images', $request->cover_image);
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::disk('public')->put(
+                'project_images',
+                $request->cover_image
+            );
+            $val_data['cover_image'] = $path;
         }
 
         $new_project = Project::create($val_data);
