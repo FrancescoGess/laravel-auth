@@ -6,7 +6,7 @@
             Modifica Lista Progetti
         </h1>
 
-        <form method="POST" action="{{ route('dashboard.projects.edit', $project->id) }}">
+        <form method="POST" action="{{ route('dashboard.projects.update', $project->id) }}">
             @csrf
             @method('PUT')
             <div class="mb-3">
